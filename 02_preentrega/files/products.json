@@ -1,0 +1,48 @@
+[
+	{
+		"title": "Denim",
+		"description": "Violeta oscuro",
+		"price": 500,
+		"thumbnail": "Images not available",
+		"code": "001",
+		"stock": "20",
+		"id": 6
+	},
+	{
+		"title": "Denim",
+		"description": "Azul",
+		"price": 6500,
+		"thumbnail": "Images not available",
+		"code": "004",
+		"stock": "35",
+		"id": 8
+	},
+	{
+		"title": "Denim",
+		"description": "Negro",
+		"price": 7500,
+		"thumbnail": "Images not available",
+		"code": "002a",
+		"stock": "25",
+		"id": 10
+	},
+	{
+		"title": "Denim",
+		"description": "Gris",
+		"price": 9500,
+		"thumbnail": "Images not available",
+		"code": "003a",
+		"stock": "30",
+		"id": 11
+	},
+	{
+		"title": "Denim",
+		"description": "Azul",
+		"price": 6500,
+		"thumbnail": "Images not available",
+		"code": "004a",
+		"stock": "35",
+		"id": 12
+	},
+	{}
+]
