@@ -36,11 +36,10 @@ app.get("/", async (req, res) => {
 })
 
 app.get("/:input", async (req, res) => {
-    let allProducts = await productManager.getProducts()
+    let form = await productManager.getProducts()
     res.render("websocket", {
-       title: "Handlebars",
-       products : allProducts
-
+       title: "Carga de Productos",
+       products : form
     })
    })
    
@@ -69,9 +68,8 @@ socketServer.on('connection', (socket) => {
         console.log(message);
     });
 
-    socket.on('newProduct', (obj) =>{
+    socket.on('newProduct', async (obj) =>{
     productManager.addProduct(obj);
-    console.log('Producto agregado')
 })
 
 })

@@ -22,3 +22,13 @@ form.onsubmit = (e) => {
     const code = inputCode.value;
     socketClient.emit('newProduct', {title, description, price, stock, code});
 }
+
+socketClient.on('reloadProducts', (products)=>{
+    let producto = document.getElementById('products')
+    let infoProducts = '';
+    products.forEach((prod) =>{
+        infoProducts += `${prod.title} - ${prod.description} - ${prod.price} - ${prod.code} - ${prod.stock} </br>`
+    })
+    producto.innerHTML = infoProducts
+
+})
