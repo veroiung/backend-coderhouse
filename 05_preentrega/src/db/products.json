@@ -61,23 +61,6 @@
 		"code": "015",
 		"stock": "25",
 		"id": 7
-	},
-	{
-		"title": "rtjs",
-		"description": "srjksw",
-		"price": "34566",
-		"stock": "56",
-		"code": "69746",
-		"thumbnail": null,
-		"id": 8
-	},
-	{
-		"title": "Melange",
-		"description": "Perlado",
-		"price": "12000",
-		"stock": "2",
-		"code": "025",
-		"thumbnail": null,
-		"id": 9
 	}
+	
 ]

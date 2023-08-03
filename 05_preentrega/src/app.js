@@ -69,7 +69,8 @@ socketServer.on('connection', (socket) => {
     });
 
     socket.on('newProduct', async (obj) =>{
-    productManager.addProduct(obj);
+    await productManager.addProduct(obj);
+    socketServer.emit('reloadProducts', await productManager.getProducts())
 })
 
 })
