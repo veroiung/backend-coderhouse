@@ -7,6 +7,8 @@ import { engine } from "express-handlebars"
 import * as path from "path";
 
 import __dirname from "./utils.js";
+import { Server } from "socket.io";
+
 
 import ProductManager from "./managers/productManager.js";
 
@@ -33,13 +35,46 @@ app.get("/", async (req, res) => {
  })
 })
 
+app.get("/:input", async (req, res) => {
+    let allProducts = await productManager.getProducts()
+    res.render("websocket", {
+       title: "Handlebars",
+       products : allProducts
+
+    })
+   })
+   
+
 
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 
 const PORT = 8080;
 
-app.listen(PORT, ()=>{
+const httpServer = app.listen(PORT, ()=>{
     console.log(`Server ok en puerto ${PORT}`);
+});
+
+const socketServer = new Server(httpServer);
+
+socketServer.on('connection', (socket) => {
+    console.log(`Usuario conectado: ${socket.id}`);
+    
+    socket.on('disconnect', () => {
+        console.log(`Usuario desconectado`);
+    })
+
+    socket.emit('saludo', 'Bienvenido a WebSocket');
+    socket.on('respuesta', (message) =>{
+        console.log(message);
+    });
+
+    socket.on('newProduct', (obj) =>{
+    productManager.addProduct(obj);
+    console.log('Producto agregado')
 })
+
+})
+
+
 
