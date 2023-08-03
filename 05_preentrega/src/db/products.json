@@ -61,6 +61,14 @@
 		"code": "015",
 		"stock": "25",
 		"id": 7
+	},
+	{
+		"title": "Melange",
+		"description": "Blanco",
+		"price": "12000",
+		"stock": "12",
+		"code": "032",
+		"thumbnail": null,
+		"id": 8
 	}
-	
 ]

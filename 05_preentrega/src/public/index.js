@@ -1,11 +1,5 @@
 const socketClient = io()
 
-socketClient.on('saludo', (message)=> {
-    console.log(message);
-
-    socketClient.emit('respuesta', 'Muchas Gracias')
-})
-
 const form = document.getElementById('form');
 const inputTitle = document.getElementById('title');
 const inputDescription = document.getElementById('description');
