@@ -23,28 +23,30 @@ routerV.get('/',(req,res)=>{
 });
 
 //Session management:
-routerV.get("/session", (req, res) => {
-    if (req.session.counter) {
-        req.session.counter++;
-        res.send(`Se ha visitado este sitio ${req.session.counter} veces.`);
-    } else {
-        req.session.counter = 1;
-        res.send("Bienvenido!");
-    }
-});
+//routerV.get("/session", (req, res) => {
+//    if (req.session.counter) {
+//        req.session.counter++;
+//        res.send(`Se ha visitado este sitio ${req.session.counter} veces.`);
+//    } else {
+//        req.session.counter = 1;
+//        res.send("Bienvenido!");
+//    }
+//});
 
 //Login
-routerV.get('/login', (req, res) => {
-    const {username, password} = req.query;
-    if (username !== 'pepe' || password !== 'pepepass'){
-        return res.status(401).send("Login Failed, check your username and password.");
-    } else {
-        req.session.user = username;
-        req.session.admin = true;
-        res.send('Login Successful !');
-    }
-});
+//routerV.get('/login', (req, res) => {
+//    const {username, password} = req.query;
+//    if (username !== 'pepe' || password !== 'pepepass'){
+//        return res.status(401).send("Login Failed, check your username and password.");
+//    } else {
+//        req.session.user = username;
+//        req.session.admin = true;
+//        res.send('Login Successful !');
+//    }
+//});
 
+
+//Login
 routerV.get("/logout", (req, res) => {
     req.session.destroy(error => {
         if (error){
@@ -69,4 +71,4 @@ routerV.get('/private', auth, (req, res) =>{
 });
 
 
-export default routerV
+export default routerV;

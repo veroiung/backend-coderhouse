@@ -102,4 +102,4 @@ routerP.get('/', async (req, res) => {
   });
 
   
-export default routerP
+export default routerP;

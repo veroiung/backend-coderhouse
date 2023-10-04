@@ -181,4 +181,4 @@ routerC.delete('/:cid/product/:pid', async (req, res) => {
     }
   });
 
-export default routerC
+export default routerC;

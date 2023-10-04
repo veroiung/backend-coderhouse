@@ -4,6 +4,18 @@ import * as path from "path";
 import __dirname from "./utils.js";
 import { Server } from "socket.io";
 
+
+// dependencias para las sessions
+//import FileStore from 'session-file-store'
+import MongoStore from 'connect-mongo'
+//import mongoose from 'mongoose';
+import session from 'express-session';
+
+//Passport imports
+import passport from 'passport';
+import initializePassport from './config/passport.config.js';
+
+
 //import Routers
 import routerP from './routes/productsRoutes.js';
 import routerC from './routes/cartsRoutes.js';
@@ -11,16 +23,14 @@ import routerV from './routes/viewsRoutes.js';
 import routerS from './routes/sessionsRoutes.js';
 import routerU from './routes/usersRoutes.js';
 
+import githubLoginViewRouter from './routes/github-login.views.router.js'
+
 //import ProductManager from "./managers/productManager.js";
 
 //import productRoutes from './routes/productsRoutes.js';
 //import cartRoutes from './routes/cartRoutes.js';
 
-// dependencias para las sessions
-import session from 'express-session';
-//import FileStore from 'session-file-store'
-import MongoStore from 'connect-mongo'
-//import mongoose from 'mongoose';
+
 
 import connectToDB from "./config/configServer.js"
 
@@ -46,8 +56,11 @@ app.use("/", express.static(__dirname + "/public"))
 app.use('/api/products', routerP)
 app.use('/api/carts', routerC)
 app.use('/', routerV);
-app.use('/api/sessions', routerS);
 app.use('/users', routerU);
+app.use('/api/sessions', routerS);
+
+app.use("/github", githubLoginViewRouter);
+
 
 const PORT = 8080;
 
@@ -157,6 +170,13 @@ socketServer.on('connection', async (socket) => {
 })
 
 })
+
+//TODO: Middlewares Passport
+initializePassport();
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 
 
 
